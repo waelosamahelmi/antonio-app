@@ -32,7 +32,9 @@ const corsOptions = {
       'capacitor://localhost',
       'ionic://localhost',
       'http://localhost',
-      'https://localhost'
+      'https://localhost',
+      'https://pizzeria-antonio.netlify.app',
+      'https://antonioadmin.netlify.app'
     ];
     
     // Allow any localhost with different ports and IPs
@@ -44,6 +46,12 @@ const corsOptions = {
     // Allow Capacitor schemes
     if (origin.startsWith('capacitor://') || origin.startsWith('ionic://')) {
       console.log(`✅ CORS allowed: mobile app origin ${origin}`);
+      return callback(null, true);
+    }
+    
+    // Allow Netlify domains
+    if (origin.includes('netlify.app')) {
+      console.log(`✅ CORS allowed: Netlify domain ${origin}`);
       return callback(null, true);
     }
     
@@ -81,10 +89,10 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'restaurant-mobile-secret-key-2025',
   resave: false,
   saveUninitialized: false,  cookie: {
-    secure: true, // Required for sameSite: 'none' in all browsers
+    secure: process.env.NODE_ENV === 'production', // Secure in production
     httpOnly: false, // Allow client-side access for mobile apps
     maxAge: parseInt(process.env.SESSION_MAX_AGE || '86400000'), // Default 24 hours
-    sameSite: 'none', // Required for cross-origin requests
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Required for cross-origin in production
     domain: undefined // Let browser handle domain
   },
   name: 'restaurant.sid', // Custom session name
@@ -96,7 +104,19 @@ app.use((req, res, next) => {
   // Add mobile-specific headers
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('X-Powered-By', 'Restaurant-Mobile-Backend');
-    // Ensure proper cookie handling for cross-origin requests
+  
+  // Explicitly set CORS headers for API routes
+  if (req.path.startsWith('/api')) {
+    const origin = req.headers.origin;
+    if (origin && (origin.includes('netlify.app') || origin.includes('localhost'))) {
+      res.header('Access-Control-Allow-Origin', origin);
+      res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS,PATCH');
+      res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,X-Requested-With,Accept,Origin');
+      res.header('Access-Control-Allow-Credentials', 'true');
+    }
+  }
+  
+  // Ensure proper cookie handling for cross-origin requests
   if (req.headers.origin && req.headers.origin.includes('localhost')) {
     // For localhost development, ensure cookies are handled properly
     const existingCookies = res.getHeader('Set-Cookie');
