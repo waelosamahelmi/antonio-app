@@ -117,7 +117,7 @@ export default function Login() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@tirva.com"
+                  placeholder="admin@pizzeriaantonio.fi"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
