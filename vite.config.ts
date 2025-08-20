@@ -34,7 +34,7 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/ws': {
-        target: 'wss://web-production-4bdb.up.railway.app',
+        target: 'wss://antonioadmin.netlify.app',
         ws: true,
         changeOrigin: true,
       },
