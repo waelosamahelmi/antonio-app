@@ -28,16 +28,8 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
-    proxy: {
-      '/api': {
-        target: 'https://antonioadmin.netlify.app/',
-        changeOrigin: true,
-      },
-      '/ws': {
-        target: 'wss://antonioadmin.netlify.app',
-        ws: true,
-        changeOrigin: true,
-      },
-    },
+  },
+  define: {
+    global: 'globalThis',
   },
 });
