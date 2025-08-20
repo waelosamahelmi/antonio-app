@@ -1,0 +1,11 @@
+{
+  "build": {
+    "commands": [
+      "npm run build:mobile"
+    ]
+  },
+  "deploy": {
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
+  }
+}

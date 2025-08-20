@@ -1,0 +1,57 @@
+{
+  "name": "Restaurant Kitchen Admin",
+  "short_name": "Kitchen Admin",
+  "description": "Restaurant kitchen management system with Android integration",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#ea580c",
+  "background_color": "#ffffff",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/generated-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/generated-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/generated-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "food", "productivity"],
+  "android": {
+    "package": "com.restaurant.admin",
+    "permissions": [
+      "android.permission.INTERNET",
+      "android.permission.ACCESS_NETWORK_STATE",
+      "android.permission.ACCESS_WIFI_STATE",
+      "android.permission.WAKE_LOCK",
+      "android.permission.RECEIVE_BOOT_COMPLETED",
+      "android.permission.VIBRATE",
+      "android.permission.POST_NOTIFICATIONS",
+      "android.permission.BLUETOOTH",
+      "android.permission.BLUETOOTH_ADMIN",
+      "android.permission.ACCESS_COARSE_LOCATION"
+    ],
+    "features": [
+      "android.hardware.bluetooth",
+      "android.hardware.wifi"
+    ],
+    "webview": {
+      "allowFileAccess": true,
+      "domStorageEnabled": true,
+      "javaScriptEnabled": true,
+      "userAgent": "RestaurantAdmin/1.0 (Android)"
+    }
+  }
+}
