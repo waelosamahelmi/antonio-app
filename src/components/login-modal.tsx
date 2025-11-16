@@ -162,7 +162,7 @@ export function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
                   info@pizzeriaantonio.fi
                 </p>
                 <p className="font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded">
-                  Antonio@2025
+                  antonio@2025
                 </p>
               </div>
             </div>

@@ -321,7 +321,7 @@ export class DatabaseStorage implements IStorage {
         { name: "Buffalo Wings", nameEn: "Buffalo Wings", price: "11.90", categoryId: insertedCategories[2].id, description: "Tulisia kanansiipiä, dippi", descriptionEn: "Spicy chicken wings, dip", isGlutenFree: true, isAvailable: true, displayOrder: 2 },
         
         // Burgers
-        { name: "Antonio Burger", nameEn: "Antonio Burger", price: "13.90", categoryId: insertedCategories[3].id, description: "Naudanliha, juusto, salaatti, tomaatti", descriptionEn: "Beef patty, cheese, lettuce, tomato", isAvailable: true, displayOrder: 1 },
+        { name: "antonio Burger", nameEn: "antonio Burger", price: "13.90", categoryId: insertedCategories[3].id, description: "Naudanliha, juusto, salaatti, tomaatti", descriptionEn: "Beef patty, cheese, lettuce, tomato", isAvailable: true, displayOrder: 1 },
         { name: "Veggie Burger", nameEn: "Veggie Burger", price: "12.90", categoryId: insertedCategories[3].id, description: "Kasvispatty, juusto, salaatti", descriptionEn: "Veggie patty, cheese, lettuce", isVegetarian: true, isVegan: true, isAvailable: true, displayOrder: 2 },
         
         // Salads

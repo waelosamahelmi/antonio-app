@@ -8,7 +8,7 @@ All receipts now print with:
 1. ✅ **5mm left and right margins** - Perfect for 58mm thermal paper
 2. ✅ **Bold text** - All text is bold for better readability
 3. ✅ **Larger font** - 12pt base, 14pt sections, 16pt header
-4. ✅ **Restaurant name on top** - "PIZZERIA ANTONIO" centered
+4. ✅ **Restaurant name on top** - "Pizzeria Antonio" centered
 5. ✅ **Finnish language** - All labels in Finnish
 6. ✅ **Euro symbol (€)** - Replaces dollar signs
 7. ✅ **Complete order details** - All information from receipt preview
@@ -21,7 +21,7 @@ All receipts now print with:
 ### 1. **Header Section** (Extra Large, Centered)
 ```
 ================================
-    PIZZERIA ANTONIO
+    Pizzeria Antonio
 ================================
 ```
 
@@ -209,7 +209,7 @@ Tervetuloa uudelleen!
 
 ```
      ================================
-         PIZZERIA ANTONIO
+         Pizzeria Antonio
      ================================
 
 TILAUS #: 1234
@@ -296,7 +296,7 @@ YHTEENSÄ:                46.50€
 ### 2. **direct-print.ts**
 ```typescript
 // Completely rewrote formatOrderReceipt() method
-- Restaurant name header: "PIZZERIA ANTONIO"
+- Restaurant name header: "Pizzeria Antonio"
 - All Finnish labels
 - Euro symbols (€) instead of dollars ($)
 - Complete order details from receipt preview
@@ -316,7 +316,7 @@ YHTEENSÄ:                46.50€
 | 10pt regular text | **12pt bold text** |
 | English labels | **Finnish labels** |
 | Dollar signs ($) | **Euro symbols (€)** |
-| Generic "ORDER RECEIPT" | **"PIZZERIA ANTONIO" restaurant name** |
+| Generic "ORDER RECEIPT" | **"Pizzeria Antonio" restaurant name** |
 | Basic item list | **Complete details with toppings, notes, etc.** |
 | Small header | **Large 16pt bold header** |
 | Cramped layout | **Spacious, professional layout** |
@@ -327,7 +327,7 @@ YHTEENSÄ:                46.50€
 
 When you print a receipt, check:
 
-- [ ] Restaurant name "PIZZERIA ANTONIO" appears at top
+- [ ] Restaurant name "Pizzeria Antonio" appears at top
 - [ ] Text is clearly bold and larger
 - [ ] 5mm white margins on left and right edges
 - [ ] All labels are in Finnish
@@ -363,7 +363,7 @@ adb install -r C:\Projects\restaurant\android-admin-app\android\app\build\output
 ### **What You Should See:**
 - ✅ Bold, large text throughout
 - ✅ Clear 5mm margins on sides
-- ✅ "PIZZERIA ANTONIO" centered at top
+- ✅ "Pizzeria Antonio" centered at top
 - ✅ All text in Finnish
 - ✅ Euro symbols for all prices
 - ✅ Professional, easy-to-read layout
@@ -378,7 +378,7 @@ adb install -r C:\Projects\restaurant\android-admin-app\android\app\build\output
 4. **Finnish First:** All customer-facing text is in Finnish
 5. **Complete Details:** Everything from the order is now printed
 6. **Euro Standard:** Proper € symbol for European currency
-7. **Restaurant Branding:** "PIZZERIA ANTONIO" header adds professionalism
+7. **Restaurant Branding:** "Pizzeria Antonio" header adds professionalism
 
 ---
 
@@ -431,7 +431,7 @@ TOTAL:           $24.00
 ### **New Layout:**
 ```
      ================================
-         PIZZERIA ANTONIO
+         Pizzeria Antonio
      ================================
 
 TILAUS #: 1234

@@ -19,7 +19,7 @@ export function ServiceHighlights() {
     },
     {
       icon: UtensilsCrossed,
-      title: t("Ravintolassa", "Dine-in"),
+      title: t("pizzeriassa", "Dine-in"),
       description: t("Nauti ateriastasi viihtyisässä ympäristössämme", "Enjoy your meal in our cozy atmosphere"),
       color: "text-green-600 bg-green-50",
     },

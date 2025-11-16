@@ -100,7 +100,7 @@ export function RestaurantSettingsModal({ isOpen, onClose }: RestaurantSettingsM
 
       toast({
         title: t("Asetukset tallennettu", "Settings Saved"),
-        description: t("Ravintolan asetukset on päivitetty onnistuneesti", "Restaurant settings have been updated successfully"),
+        description: t("pizzerian asetukset on päivitetty onnistuneesti", "Restaurant settings have been updated successfully"),
       });
 
       onClose();
@@ -144,7 +144,7 @@ export function RestaurantSettingsModal({ isOpen, onClose }: RestaurantSettingsM
           <DialogHeader>
             <DialogTitle className="flex items-center space-x-2">
               <Settings className="w-5 h-5" />
-              <span>{t("Ravintolan tiedot", "Restaurant Info")}</span>
+              <span>{t("pizzerian tiedot", "Restaurant Info")}</span>
             </DialogTitle>
           </DialogHeader>
           <div className="p-6 text-center">
@@ -164,7 +164,7 @@ export function RestaurantSettingsModal({ isOpen, onClose }: RestaurantSettingsM
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
             <Settings className="w-5 h-5" />
-            <span>{t("Ravintolan tiedot", "Restaurant Info")}</span>
+            <span>{t("pizzerian tiedot", "Restaurant Info")}</span>
           </DialogTitle>
         </DialogHeader>
         
@@ -174,7 +174,7 @@ export function RestaurantSettingsModal({ isOpen, onClose }: RestaurantSettingsM
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Power className="w-5 h-5" />
-                <span>{t("Ravintolan tila", "Restaurant Status")}</span>
+                <span>{t("pizzerian tila", "Restaurant Status")}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -202,7 +202,7 @@ export function RestaurantSettingsModal({ isOpen, onClose }: RestaurantSettingsM
                 {isForceOpen && (
                   <div className="text-sm text-orange-600 bg-orange-50 p-2 rounded">
                     <AlertCircle className="w-4 h-4 inline mr-1" />
-                    {t("Ravintola on pakotettu auki aukioloajoista riippumatta", "Restaurant is forced open regardless of scheduled hours")}
+                    {t("pizzeria on pakotettu auki aukioloajoista riippumatta", "Restaurant is forced open regardless of scheduled hours")}
                   </div>
                 )}
               </div>

@@ -27,8 +27,8 @@ export function AboutSection() {
           <div className="max-w-4xl mx-auto space-y-6 text-lg text-gray-700 dark:text-gray-300">
             <p>
               {t(
-                "Tervetuloa Antonio ravintolaan, jossa valmistamme annoksemme aina tuoreista ja laadukkaista raaka-aineista. Olemme ylpeitä perinteisistä valmistusmenetelmistämme, jotka takaavat aidon makuelämyksen jokaisella kerralla.",
-                "Welcome to Antonio restaurant, where we prepare our dishes always from fresh and quality ingredients. We are proud of our traditional preparation methods, which guarantee an authentic taste experience every time."
+                "Tervetuloa antonio pizzeriaan, jossa valmistamme annoksemme aina tuoreista ja laadukkaista raaka-aineista. Olemme ylpeitä perinteisistä valmistusmenetelmistämme, jotka takaavat aidon makuelämyksen jokaisella kerralla.",
+                "Welcome to antonio restaurant, where we prepare our dishes always from fresh and quality ingredients. We are proud of our traditional preparation methods, which guarantee an authentic taste experience every time."
               )}
             </p>
             <p className="text-xl font-semibold text-red-600">

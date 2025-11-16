@@ -68,7 +68,7 @@ export function ReceiptPreviewModal({ receiptData, originalOrder, isOpen, onClos
     const makeUnderlined = (text: string) => `__${text.toUpperCase()}__`;
 
     // Restaurant header - Enhanced formatting like ESC/POS
-    lines.push(centerText(makeBold("RAVINTOLA Antonio")));
+    lines.push(centerText(makeBold("Pizzeria Antonio")));
     lines.push('='.repeat(lineWidth));
     lines.push('');
     

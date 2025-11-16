@@ -81,7 +81,7 @@ export class AuthService {
     if (!existingAdmin) {
       await this.createUser({
         email: "info@pizzeriaantonio.fi",
-        password: "Antonio@2025",
+        password: "antonio@2025",
         role: "admin",
         isActive: true,
       });

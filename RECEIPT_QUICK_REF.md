@@ -6,7 +6,7 @@
 1. ✅ **5mm left + right margins** - No more cut-off text
 2. ✅ **Bold text** - All text is bold for better readability
 3. ✅ **Larger font** - 12pt base (was 10pt), 16pt header
-4. ✅ **Restaurant name** - "PIZZERIA ANTONIO" at top
+4. ✅ **Restaurant name** - "Pizzeria Antonio" at top
 5. ✅ **Finnish language** - All labels in Finnish
 6. ✅ **Euro symbol (€)** - Replaces all dollar signs ($)
 7. ✅ **Complete details** - All order info printed
@@ -18,7 +18,7 @@
 
 ```
      ================================
-         PIZZERIA ANTONIO
+         Pizzeria Antonio
      ================================
 
 TILAUS #: 1234
@@ -119,7 +119,7 @@ adb install -r android\app\build\outputs\apk\debug\app-debug.apk
 ## ✅ Verify
 
 Check your printed receipt has:
-- [ ] "PIZZERIA ANTONIO" at top (large)
+- [ ] "Pizzeria Antonio" at top (large)
 - [ ] Bold text throughout
 - [ ] 5mm margins on sides
 - [ ] Finnish labels

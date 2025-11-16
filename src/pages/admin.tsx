@@ -229,8 +229,8 @@ export default function Admin() {
       setIsRestaurantBusy(newStatus);
       toast({
         title: newStatus 
-          ? adminT("Ravintola asetettu kiireiseksi", "Restaurant set to busy", "تم تعيين المطعم مشغول")
-          : adminT("Ravintola ei ole enää kiireinen", "Restaurant no longer busy", "المطعم لم يعد مشغولاً"),
+          ? adminT("pizzeria asetettu kiireiseksi", "Restaurant set to busy", "تم تعيين المطعم مشغول")
+          : adminT("pizzeria ei ole enää kiireinen", "Restaurant no longer busy", "المطعم لم يعد مشغولاً"),
         description: newStatus
           ? adminT("Asiakkaat näkevät, että olet kiireinen", "Customers will see you're busy", "سيرى العملاء أنك مشغول")
           : adminT("Asiakkaat voivat taas tehdä tilauksia normaalisti", "Customers can order normally again", "يمكن للعملاء الطلب بشكل طبيعي مرة أخرى"),
@@ -776,7 +776,7 @@ export default function Admin() {
               <div>
                 <h1 className="text-lg font-bold text-gray-900 dark:text-white">
                   <span className="hidden sm:inline">Pizzeria Antonio</span>
-                  <span className="sm:hidden">Antonio</span>
+                  <span className="sm:hidden">antonio</span>
                 </h1>
                 <p className="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">
                   {adminT("Hallintapaneeli", "Admin Panel", "لوحة الإدارة")}
@@ -914,7 +914,7 @@ export default function Admin() {
               {/* Busy Status Toggle */}
               <div className="flex items-center justify-between px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <label htmlFor="busy-toggle-mobile" className="text-sm font-medium">
-                  {adminT("Ravintola kiireinen", "Restaurant Busy", "المطعم مشغول")}
+                  {adminT("pizzeria kiireinen", "Restaurant Busy", "المطعم مشغول")}
                 </label>
                 <Switch
                   id="busy-toggle-mobile"
@@ -1595,7 +1595,7 @@ export default function Admin() {
                     className="w-full justify-start"
                   >
                     <Store className="w-4 h-4 mr-2" />
-                    {adminT("Ravintolan tiedot", "Restaurant Info", "معلومات المطعم")}
+                    {adminT("pizzerian tiedot", "Restaurant Info", "معلومات المطعم")}
                   </Button>
                   <Button 
                     onClick={() => setShowSiteConfigModal(true)}

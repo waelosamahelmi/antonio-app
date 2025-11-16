@@ -77,7 +77,7 @@ app.use(session({
     tableName: 'session',
     createTableIfMissing: true,
   }),
-  secret: process.env.SESSION_SECRET || 'ravintola-antonio-secret-key-2025',
+  secret: process.env.SESSION_SECRET || 'pizzeria-antonio-secret-key-2025',
   resave: false,
   saveUninitialized: false,
   cookie: {

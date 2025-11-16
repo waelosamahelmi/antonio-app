@@ -144,7 +144,7 @@ lines.push(`Tilaus: #${order.orderNumber || order.id || 'N/A'}`); // "Tilaus: #1
 ### **BEFORE (Broken):**
 ```
 ================================  ← Too long, wraps!
-    PIZZERIA ANTONIO
+    Pizzeria Antonio
 ================================
 
 TILAUS #: 1234                    ← Too large
@@ -167,7 +167,7 @@ YHTEENSÄ:                0.00€    ← WRONG! (total not found)
 ### **AFTER (Fixed):**
 ```
   ==========================      ← Fits perfectly!
-      PIZZERIA ANTONIO
+      Pizzeria Antonio
   ==========================
 
 Tilaus: #1234                     ← Smaller, cleaner

@@ -109,7 +109,7 @@ export function ContactSection() {
                   <div className="flex items-center space-x-3 mb-3">
                     <Clock className="w-5 h-5 text-green-600" />
                     <h4 className="font-semibold text-gray-900 dark:text-white">
-                      {t("Ravintola", "Restaurant")}
+                      {t("pizzeria", "Restaurant")}
                     </h4>
                   </div>
                   <div className="ml-8 space-y-1 text-gray-600 dark:text-gray-300">

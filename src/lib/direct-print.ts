@@ -139,7 +139,7 @@ export class DirectPrintService {
     
     // Restaurant header - Large and centered
     lines.push(centerText('================'));
-    lines.push(centerText('PIZZERIA ANTONIO'));
+    lines.push(centerText('Pizzeria Antonio'));
     lines.push(centerText('================'));
     
     // Order number and date - Smaller text (normal)
