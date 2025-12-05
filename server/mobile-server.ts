@@ -27,7 +27,7 @@ const corsOptions = {
     // Allow Capacitor and localhost origins
     const allowedOrigins = [
       'http://localhost:5173',
-      'http://localhost:5174', 
+      'http://localhost:5174',
       'http://localhost:8080',
       'http://localhost:8100',
       'capacitor://localhost',
@@ -35,7 +35,9 @@ const corsOptions = {
       'http://localhost',
       'https://localhost',
       'https://pizzeria-antonio.fly.io',
-      'https://antonioadmin.fly.io'
+      'https://antonioadmin.fly.io',
+      'https://pizzeriaantonio.fi',
+      'http://pizzeriaantonio.fi'
     ];
     
     // Allow any localhost with different ports and IPs
