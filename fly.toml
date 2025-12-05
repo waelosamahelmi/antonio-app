@@ -1,0 +1,40 @@
+﻿# Fly.io configuration for antonio Admin App
+app = "antonio-admin"
+primary_region = "arn"
+
+[build]
+  [build.args]
+    NODE_VERSION = "20"
+    VITE_SUPABASE_URL = "https://ssyhpqfdzbvrkvqdnxyy.supabase.co"
+    VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzeWhwcWZkemJ2cmt2cWRueHl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNTQ0ODcsImV4cCI6MjA3ODYzMDQ4N30.rplVZXLXaMl3x8e6UftdooztYVWFs6v91DLmg3jrorQ"
+    VITE_SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzeWhwcWZkemJ2cmt2cWRueHl5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MzA1NDQ4NywiZXhwIjoyMDc4NjMwNDg3fQ.cysEG4FKkXUqDP48OB5dwspAMxskNIshyHhFfo-NO0U"
+    VITE_CLOUDINARY_CLOUD_NAME = "dxsr2gbbd"
+    VITE_CLOUDINARY_API_KEY = "826112581683564"
+    VITE_API_URL = "https://antonio-admin.fly.dev"
+    VITE_WS_URL = "https://antonio-admin.fly.dev"
+    VITE_SERVER_URL = "https://antonio-admin.fly.dev"
+    VITE_APP_NAME = "pizzeria antonio - Kitchen Admin"
+    VITE_ANDROID_PACKAGE = "com.pizzeria.antonio.admin"
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [http_service.concurrency]
+    type = "connections"
+    hard_limit = 25
+    soft_limit = 20
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
+
+[env]
+  NODE_ENV = "production"
+  PORT = "5000"
+  HOST = "0.0.0.0"
