@@ -1,0 +1,128 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      pages: write
+      id-token: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Create .env file
+        run: |
+          cat > .env << EOF
+          VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SUPABASE_SERVICE_ROLE_KEY=${{ secrets.VITE_SUPABASE_SERVICE_ROLE_KEY }}
+          VITE_API_URL=${{ secrets.VITE_API_URL }}
+          VITE_WS_URL=${{ secrets.VITE_WS_URL }}
+          VITE_SERVER_URL=${{ secrets.VITE_SERVER_URL }}
+          VITE_APP_NAME=${{ secrets.VITE_APP_NAME }}
+          VITE_ANDROID_PACKAGE=${{ secrets.VITE_ANDROID_PACKAGE }}
+          VITE_ENABLE_ANDROID_FEATURES=true
+          VITE_ENABLE_BLUETOOTH=true
+          VITE_ENABLE_LOCAL_NETWORK=true
+          IMAGE_CDN_URL=${{ secrets.IMAGE_CDN_URL }}
+          EOF
+
+      - name: Build web app
+        run: npm run build:mobile
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Grant execute permission for gradlew
+        working-directory: ./android
+        run: chmod +x gradlew
+
+      - name: Build APK
+        run: cd android && ./gradlew assembleRelease
+
+      - name: Sign APK
+        if: github.ref == 'refs/heads/main'
+        uses: r0adkll/sign-android-release@v1
+        id: sign_app
+        with:
+          releaseDirectory: android/app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+        env:
+          BUILD_TOOLS_VERSION: "34.0.0"
+
+      - name: Rename APK
+        run: |
+          VERSION=$(date +'%Y%m%d_%H%M%S')
+          mv ${{steps.sign_app.outputs.signedReleaseFile}} android/app/build/outputs/apk/release/antonio-admin-${VERSION}.apk
+          echo "APK_FILE=antonio-admin-${VERSION}.apk" >> $GITHUB_ENV
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.VERSION }}
+          release_name: Antonio Admin v${{ env.VERSION }}
+          body: |
+            Automated build from commit ${{ github.sha }}
+            
+            ## Download
+            [Download APK](https://github.com/${{ github.repository }}/releases/download/v${{ env.VERSION }}/${{ env.APK_FILE }})
+            
+            Or scan the QR code at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          draft: false
+          prerelease: false
+
+      - name: Upload APK to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: android/app/build/outputs/apk/release/${{ env.APK_FILE }}
+          asset_name: ${{ env.APK_FILE }}
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: Update latest release tag
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag -f latest
+          git push origin latest --force
+
+      - name: Deploy download page
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./download-page
+          keep_files: false
+          force_orphan: true

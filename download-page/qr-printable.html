@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlateOS - Download QR Code</title>
+    <title>Pizzeria Antonio - Download QR Code</title>
     <style>
         @media print {
             .no-print { display: none; }
@@ -44,7 +44,7 @@
             display: inline-block;
             padding: 20px;
             background: white;
-            border: 3px solid #667eea;
+            border: 3px solid #8B2500;
             border-radius: 15px;
             margin: 20px 0;
         }
@@ -76,7 +76,7 @@
         }
 
         button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B2500 0%, #D4740C 100%);
             color: white;
             border: none;
             padding: 12px 30px;
@@ -126,8 +126,8 @@
 </head>
 <body>
     <div class="card">
-        <h1>🍽️ PlateOS</h1>
-        <p class="subtitle">Scan to Download Latest Version</p>
+        <h1>🍕 Pizzeria Antonio Admin</h1>
+        <p class="subtitle">Scan to Download Kitchen App</p>
 
         <div id="qrcode"></div>
 
@@ -159,7 +159,7 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        const DOWNLOAD_PAGE_URL = 'https://waelosamahelmi.github.io/antonio-app/';
+        const DOWNLOAD_PAGE_URL = 'https://waelosamahelmi.github.io/antonio-admin/';
 
         function createQRCode(url) {
             const qrcodeContainer = document.getElementById('qrcode');
@@ -185,7 +185,7 @@
             });
             
             const link = document.createElement('a');
-            link.download = 'plateos-qr.png';
+            link.download = 'antonio-admin-qr.png';
             link.href = canvas.toDataURL();
             link.click();
         }

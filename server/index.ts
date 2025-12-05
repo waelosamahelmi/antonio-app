@@ -22,7 +22,7 @@ const corsOptions = {
     // Allow Capacitor and localhost origins
     const allowedOrigins = [
       'http://localhost:5173',
-      'http://localhost:5174', 
+      'http://localhost:5174',
       'http://localhost:8080',
       'http://localhost:8100',
       'capacitor://localhost',
@@ -32,6 +32,8 @@ const corsOptions = {
       // Add production domains if needed
       'https://antonio-admin.fly.dev',
       'https://helmies-food-web.fly.io',
+      'https://pizzeriaantonio.fi',
+      'http://pizzeriaantonio.fi',
       // Add any other production frontend domains
     ];
     
