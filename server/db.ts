@@ -18,11 +18,17 @@ if (!process.env.DATABASE_URL) {
 const connectionString = process.env.DATABASE_URL;
 
 // Configure postgres client with connection options for better resilience
+// Using smaller pool size and shorter timeouts to work better with Supabase's PgBouncer
 const client = postgres(connectionString, {
-  max: 10,                    // Maximum pool connections
-  idle_timeout: 20,           // Close idle connections after 20 seconds
-  connect_timeout: 30,        // Connection timeout in seconds
-  max_lifetime: 60 * 30,      // Max connection lifetime (30 minutes)
+  max: 3,                     // Smaller pool to reduce connection pressure
+  idle_timeout: 10,           // Close idle connections faster
+  connect_timeout: 10,        // Shorter connection timeout
+  max_lifetime: 60 * 5,       // Max connection lifetime (5 minutes)
+  prepare: false,             // Required for Supabase transaction pooler (PgBouncer)
+  connection: {
+    application_name: 'antonio-admin',
+  },
+  onnotice: () => {},         // Suppress notice messages
 });
 
 export const db = drizzle({ client, schema });
@@ -31,9 +37,10 @@ export const db = drizzle({ client, schema });
 import { Pool } from 'pg';
 export const pool = new Pool({
   connectionString: connectionString,
-  max: 5,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 30000,
+  max: 3,                       // Small pool for session storage
+  idleTimeoutMillis: 10000,     // 10 seconds
+  connectionTimeoutMillis: 10000,
+  allowExitOnIdle: true,        // Allow process to exit when pool is idle
 });
 
 // Optional: Export Supabase client for auth and other features

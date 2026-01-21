@@ -44,8 +44,8 @@ primary_region = "arn"
   SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5emxvdmtlZ2pqamd3b2VkcnVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NTM3OTUsImV4cCI6MjA4MDUyOTc5NX0.pkCvUAT1SXhCL8BikKeNZYTe80kDEqC0rp3O5wtW20c"
   SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5emxvdmtlZ2pqamd3b2VkcnVoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NDk1Mzc5NSwiZXhwIjoyMDgwNTI5Nzk1fQ.PQ_hqlvFieXfw0x0xmO0UaS3mdIjqGSF_QDk29rgdac"
   
-  # Database URL - using transaction pooler (port 6543)
-  DATABASE_URL = "postgresql://postgres.qyzlovkegjjjgwoedruh:Weezy1996Weezy@aws-1-eu-west-1.pooler.supabase.com:6543/postgres"
+  # Database URL - using session pooler (port 5432) for better connection stability
+  DATABASE_URL = "postgresql://postgres.qyzlovkegjjjgwoedruh:Weezy1996Weezy@aws-1-eu-west-1.pooler.supabase.com:5432/postgres?sslmode=require"
   
   # Image/CDN configuration
   IMAGE_UPLOAD_STRATEGY = "ftp"
