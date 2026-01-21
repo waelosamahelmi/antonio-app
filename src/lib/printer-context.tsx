@@ -724,7 +724,7 @@ export function PrinterProvider({ children }: PrinterProviderProps) {
         console.log('☁️ CloudPRNT printer is active, submitting job to server...');
         const { createCloudPRNTClient } = await import('./printer/cloudprnt-client');
         
-        const apiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_SERVER_URL || 'https://antonio-admin.fly.dev';
+        const apiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_SERVER_URL || 'https://antonio-app.fly.dev';
         const client = createCloudPRNTClient(apiUrl);
         
         // Parse order using universal parser

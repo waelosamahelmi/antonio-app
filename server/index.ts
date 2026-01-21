@@ -30,7 +30,7 @@ const corsOptions = {
       'http://localhost',
       'https://localhost',
       // Add production domains if needed
-      'https://antonio-admin.fly.dev',
+      'https://antonio-app.fly.dev',
       'https://helmies-food-web.fly.io',
       'https://pizzeriaantonio.fi',
       'http://pizzeriaantonio.fi',

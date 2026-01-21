@@ -213,7 +213,7 @@ export function ProductManagementModal({
       formDataToSend.append('folder', 'menu-items');
       
       // Upload via server API (which uses Hostinger FTP)
-      const API_URL = import.meta.env.VITE_API_URL || 'https://antonio-admin.fly.dev';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://antonio-app.fly.dev';
       const response = await fetch(`${API_URL}/api/upload-image`, {
         method: 'POST',
         body: formDataToSend,

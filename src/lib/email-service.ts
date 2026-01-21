@@ -97,7 +97,7 @@ export async function sendOrderAcceptedEmail(
   data: OrderEmailData
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const API_URL = import.meta.env.VITE_EMAIL_API_URL || 'https://antonio-admin.fly.dev';
+    const API_URL = import.meta.env.VITE_EMAIL_API_URL || 'https://antonio-app.fly.dev';
     
     console.log('📧 Sending order accepted email to:', data.customerEmail);
     
@@ -243,7 +243,7 @@ export async function sendOrderCancelledEmail(
   data: OrderEmailData & { cancellationReason?: string; refundAmount?: number }
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const API_URL = import.meta.env.VITE_EMAIL_API_URL || 'https://antonio-admin.fly.dev';
+    const API_URL = import.meta.env.VITE_EMAIL_API_URL || 'https://antonio-app.fly.dev';
     
     console.log('📧 Sending order cancellation email to:', data.customerEmail);
     
@@ -371,7 +371,7 @@ export async function sendOrderDeliveredEmail(
   data: OrderEmailData & { reviewLink?: string }
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const API_URL = import.meta.env.VITE_EMAIL_API_URL || 'https://antonio-admin.fly.dev';
+    const API_URL = import.meta.env.VITE_EMAIL_API_URL || 'https://antonio-app.fly.dev';
     
     console.log('📧 Sending order delivered email to:', data.customerEmail);
     

@@ -26,10 +26,10 @@ Copy the values from your local `.env` file:
 #### API Configuration
 | Secret Name | Value from .env |
 |-------------|-----------------|
-| `VITE_API_URL` | `https://antonio-admin.fly.dev` |
+| `VITE_API_URL` | `https://antonio-app.fly.dev` |
 | `VITE_WS_URL` | `ws://localhost:5000` |
-| `VITE_SERVER_URL` | `https://antonio-admin.fly.dev` |
-| `VITE_EMAIL_API_URL` | `https://antonio-admin.fly.dev` |
+| `VITE_SERVER_URL` | `https://antonio-app.fly.dev` |
+| `VITE_EMAIL_API_URL` | `https://antonio-app.fly.dev` |
 
 #### App Configuration
 | Secret Name | Value from .env |

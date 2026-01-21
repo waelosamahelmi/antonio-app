@@ -54,7 +54,7 @@ export function CloudPRNTManagement() {
 
   useEffect(() => {
     // Get server URL from environment variables
-    const apiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_SERVER_URL || 'https://antonio-admin.fly.dev';
+    const apiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_SERVER_URL || 'https://antonio-app.fly.dev';
     setServerUrl(apiUrl);
     console.log('🌐 CloudPRNT Server URL:', apiUrl);
     
@@ -64,7 +64,7 @@ export function CloudPRNTManagement() {
   const loadStatus = async () => {
     setIsLoading(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_SERVER_URL || 'https://antonio-admin.fly.dev';
+      const apiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_SERVER_URL || 'https://antonio-app.fly.dev';
       const client = createCloudPRNTClient(apiUrl);
       const statusData = await client.getStatus();
       console.log('📊 CloudPRNT Status:', statusData);
