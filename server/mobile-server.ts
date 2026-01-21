@@ -83,12 +83,25 @@ app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 // Session configuration for mobile
 const PgSession = connectPgSimple(session);
 
-app.use(session({
-  store: new PgSession({
+// Try to use PostgreSQL session store, fall back to memory store if DB unavailable
+let sessionStore: session.Store | undefined;
+try {
+  sessionStore = new PgSession({
     pool: pool,
     tableName: 'session',
     createTableIfMissing: true,
-  }),
+    errorLog: (err: Error) => {
+      console.error('Session store error:', err.message);
+    }
+  });
+  log('Using PostgreSQL session store');
+} catch (err) {
+  console.error('Failed to create PostgreSQL session store, using memory store:', err);
+  sessionStore = undefined; // Will use default MemoryStore
+}
+
+app.use(session({
+  store: sessionStore,
   secret: process.env.SESSION_SECRET || 'restaurant-mobile-secret-key-2025',
   resave: false,
   saveUninitialized: false,  cookie: {
@@ -198,13 +211,23 @@ app.get('/api/mobile/status', (req, res) => {
 
 (async () => {
   try {
-    // Initialize admin user
-    await authService.initializeAdminUser();
-    log('Admin user initialized');
+    // Try to initialize admin user (non-blocking)
+    try {
+      await authService.initializeAdminUser();
+      log('Admin user initialized');
+    } catch (dbError) {
+      console.error('Database initialization error:', dbError);
+      log('Warning: Could not initialize admin user - database may be unavailable');
+    }
     
-    // Initialize comprehensive toppings
-    await initializeComprehensiveToppings();
-    log('Toppings initialized');
+    // Try to initialize comprehensive toppings (non-blocking)
+    try {
+      await initializeComprehensiveToppings();
+      log('Toppings initialized');
+    } catch (toppingError) {
+      console.error('Error initializing admin user:', toppingError);
+      log('Warning: Could not initialize toppings - database may be unavailable');
+    }
     
     // Register CloudPRNT routes
     app.use(cloudPRNTServer.getRouter());
